@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-        toolbar?.setTitle("Uno")
+        toolbar.setTitle("Uno")
         loadFragment(EventsFragment())
     }
 
