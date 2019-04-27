@@ -15,10 +15,19 @@ import javax.annotation.Nonnull
 import com.apollographql.apollo.GraphQLCall
 import android.R.attr.name
 import android.R.attr.description
+import android.content.Intent
 import android.util.Log
 import com.apollographql.apollo.api.Response
 import com.amazonaws.amplify.generated.graphql.CreateEventMutation
 import type.CreateEventInput
+import android.widget.Toast
+import android.view.Menu
+import com.amazonaws.mobile.client.*
+import com.amazonaws.mobile.client.results.SignInResult
+import android.R.attr.password
+import com.amazonaws.mobile.client.AWSMobileClient
+import com.amazonaws.mobile.client.UserStateDetails
+import com.amazonaws.mobile.client.UserStateListener
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,8 +40,23 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         mAWSAppSyncClient = AWSAppSyncClient.builder()
             .context(getApplicationContext())
-            .awsConfiguration( AWSConfiguration(getApplicationContext()))
-            .build();
+            .awsConfiguration(AWSConfiguration(getApplicationContext()))
+            .build()
+
+        AWSMobileClient.getInstance().addUserStateListener { userStateDetails ->
+            when (userStateDetails.userState) {
+                UserState.SIGNED_OUT -> {
+                    val intent = Intent(this@MainActivity, AuthActivity::class.java)
+                    // start your next activity
+                    finish()
+                    startActivity(intent)
+                    Log.i("userState", "user signed out")
+                }
+
+                else -> Log.i("userState", "unsupported")
+            }//Alternatively call .showSignIn()
+        }
+
         toolbar = supportActionBar!!
         runMutation()
 
@@ -42,7 +66,8 @@ class MainActivity : AppCompatActivity() {
         loadFragment(EventsFragment())
     }
 
-    private val mOnNavigationItemSelectedListener = object : BottomNavigationView.OnNavigationItemSelectedListener {
+    private
+    val mOnNavigationItemSelectedListener = object : BottomNavigationView.OnNavigationItemSelectedListener {
 
         override fun onNavigationItemSelected(item: MenuItem): Boolean {
             when (item.getItemId()) {
@@ -74,8 +99,11 @@ class MainActivity : AppCompatActivity() {
         transaction.addToBackStack(null)
         transaction.commit()
     }
+
     fun runMutation() {
-        val createEventInput:CreateEventInput = CreateEventInput.builder().title("So much Trash Nea My Place").type("Clean Up").location("65.17229,88.35528").build()
+        val createEventInput: CreateEventInput =
+            CreateEventInput.builder().title("So much Trash Nea My Place").type("Clean Up")
+                .location("65.17229,88.35528").build()
 
         mAWSAppSyncClient.mutate(CreateEventMutation.builder().input(createEventInput).build())
             .enqueue(mutationCallback)
@@ -88,6 +116,24 @@ class MainActivity : AppCompatActivity() {
 
         override fun onFailure(e: ApolloException) {
             Log.e("Error", e.toString())
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.options_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        when (id) {
+            R.id.log_out -> {
+                Toast.makeText(applicationContext, "Log Out", Toast.LENGTH_LONG).show()
+                AWSMobileClient.getInstance().signOut()
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
         }
     }
 }
