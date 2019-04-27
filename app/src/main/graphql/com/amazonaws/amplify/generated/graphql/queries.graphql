@@ -1,31 +1,15 @@
 # this is an auto generated file. This will be overwritten
-query GetUser($id: ID!) {
-  getUser(id: $id) {
-    id
-    name
-    email
-  }
-}
-query ListUsers(
-  $filter: ModelUserFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      name
-      email
-    }
-    nextToken
-  }
-}
 query GetEvent($id: ID!) {
   getEvent(id: $id) {
     id
     title
     type
     location
+    is_finished
+    difficulty_level
+    photo {
+      ...S3Object
+    }
   }
 }
 query ListEvents(
@@ -39,6 +23,11 @@ query ListEvents(
       title
       type
       location
+      is_finished
+      difficulty_level
+      photo {
+        ...S3Object
+      }
     }
     nextToken
   }

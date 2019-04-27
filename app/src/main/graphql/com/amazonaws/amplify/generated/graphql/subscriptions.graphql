@@ -1,31 +1,15 @@
 # this is an auto generated file. This will be overwritten
-subscription OnCreateUser {
-  onCreateUser {
-    id
-    name
-    email
-  }
-}
-subscription OnUpdateUser {
-  onUpdateUser {
-    id
-    name
-    email
-  }
-}
-subscription OnDeleteUser {
-  onDeleteUser {
-    id
-    name
-    email
-  }
-}
 subscription OnCreateEvent {
   onCreateEvent {
     id
     title
     type
     location
+    is_finished
+    difficulty_level
+    photo {
+      ...S3Object
+    }
   }
 }
 subscription OnUpdateEvent {
@@ -34,6 +18,11 @@ subscription OnUpdateEvent {
     title
     type
     location
+    is_finished
+    difficulty_level
+    photo {
+      ...S3Object
+    }
   }
 }
 subscription OnDeleteEvent {
@@ -42,5 +31,10 @@ subscription OnDeleteEvent {
     title
     type
     location
+    is_finished
+    difficulty_level
+    photo {
+      ...S3Object
+    }
   }
 }
