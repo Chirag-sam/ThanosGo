@@ -18,6 +18,8 @@ import android.R.attr.description
 import android.util.Log
 import com.apollographql.apollo.api.Response
 import com.amazonaws.amplify.generated.graphql.CreateEventMutation
+import com.amazonaws.amplify.generated.graphql.ListEventsQuery
+import com.amazonaws.mobileconnectors.appsync.fetcher.AppSyncResponseFetchers
 import type.CreateEventInput
 
 
@@ -89,5 +91,21 @@ class MainActivity : AppCompatActivity() {
         override fun onFailure(e: ApolloException) {
             Log.e("Error", e.toString())
         }
+    }
+
+    private val eventsCallback = object : GraphQLCall.Callback<ListEventsQuery.Data>() {
+        override fun onResponse(response: Response<ListEventsQuery.Data>) {
+            Log.i("Results", "Fetched Event" + response.toString())
+        }
+
+        override fun onFailure(e: ApolloException) {
+            Log.e("Error", e.toString())
+        }
+    }
+
+    fun getEvents () {
+        mAWSAppSyncClient.query(ListEventsQuery.builder().build())
+            .responseFetcher(AppSyncResponseFetchers.CACHE_AND_NETWORK)
+            .enqueue(eventsCallback)
     }
 }

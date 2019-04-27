@@ -10,4 +10,18 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
+    <string name="latitude_label">Latitude: %f</string>
+    <string name="longitude_label">Longitude: %f</string>
+    <string name="location_permission_text">We need your location to proceed. Continue?</string>
+    <string name="title_activity_location">LocationActivity</string>
+    <string name="no_location_detected">
+        No location detected. Make sure location is enabled on the device.
+    </string>
+    <string name="permission_denied_explanation">
+        Permission was denied, but is needed for core functionality.
+    </string>
+    <string name="permission_rationale">
+        Location permission is needed for core functionality
+    </string>
+    <string name="settings">Settings</string>
 </resources>
