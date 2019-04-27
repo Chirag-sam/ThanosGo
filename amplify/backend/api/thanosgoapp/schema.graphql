@@ -1,0 +1,11 @@
+type User @model {
+  id: ID!
+  name: String!
+  email: String!
+}
+type Event @model {
+  id: ID!
+  title: String!
+  type: String!
+  location: String!
+}
