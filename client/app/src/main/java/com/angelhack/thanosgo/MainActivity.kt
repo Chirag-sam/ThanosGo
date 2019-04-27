@@ -27,6 +27,7 @@ import android.view.Menu
 import com.amazonaws.mobile.client.*
 import com.amazonaws.mobile.client.results.SignInResult
 import android.R.attr.password
+import android.widget.Toolbar
 import com.amazonaws.mobile.client.AWSMobileClient
 import com.amazonaws.mobile.client.UserStateDetails
 import com.amazonaws.mobile.client.UserStateListener
@@ -36,11 +37,17 @@ import com.angelhack.thanosgo.fragments.ProfileFragment
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mAWSAppSyncClient: AWSAppSyncClient
-    private lateinit var toolbar: ActionBar
+    private lateinit var toolbar: androidx.appcompat.widget.Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+
+        setSupportActionBar(toolbarrr as androidx.appcompat.widget.Toolbar)
+        (toolbarrr as androidx.appcompat.widget.Toolbar).setTitleTextColor(getResources().getColor(android.R.color.white))
+
         mAWSAppSyncClient = AWSAppSyncClient.builder()
             .context(getApplicationContext())
             .awsConfiguration(AWSConfiguration(getApplicationContext()))
@@ -60,12 +67,14 @@ class MainActivity : AppCompatActivity() {
             }//Alternatively call .showSignIn()
         }
 
-        toolbar = supportActionBar!!
-        runMutation()
+        //toolbar = supportActionBar!!
+        setSupportActionBar(toolbarrr)
+        toolbarrr.setTitleTextColor(resources.getColor(R.color.colorPrimary))
+//        runMutation()
 
         navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-        toolbar.setTitle("Activities")
+        toolbarrr.setTitle("Activities")
         loadFragment(EventsFragment())
     }
 
@@ -75,17 +84,17 @@ class MainActivity : AppCompatActivity() {
         override fun onNavigationItemSelected(item: MenuItem): Boolean {
             when (item.getItemId()) {
                 R.id.activities -> {
-                    toolbar.title = "Activities"
+                    toolbarrr.title = "Activities"
                     loadFragment(EventsFragment())
                     return true
                 }
                 R.id.feed -> {
-                    toolbar.title = "Feed"
+                    toolbarrr.title = "Feed"
                     loadFragment(EventsFragment())
                     return true
                 }
                 R.id.profile -> {
-                    toolbar.title = "Profile"
+                    toolbarrr.title = "Profile"
                     loadFragment(ProfileFragment())
                     return true
                 }

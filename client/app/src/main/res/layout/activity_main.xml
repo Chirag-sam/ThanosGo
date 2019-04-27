@@ -4,19 +4,27 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context=".MainActivity">
+                tools:context=".MainActivity"
+>
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarrr"
+            android:layout_width="match_parent"
+            app:theme="@style/ToolBarStyle"
+            android:layout_height="?attr/actionBarSize"
+    />
 
     <FrameLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@id/toolbarrr"
             android:layout_above="@+id/navigationView"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigationView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
+            android:background="@color/white"
             app:itemBackground="?selectableItemBackgroundBorderless"
             app:itemHorizontalTranslationEnabled="true"
             android:layout_alignParentBottom="true"

@@ -43,7 +43,8 @@
                 android:label="@string/title_activity_maps"
                 android:theme="@style/AppThemeNoAction">
         </activity>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity"
+        android:theme="@style/AppThemeNoAction"/>
 
         <service android:name="org.eclipse.paho.android.service.MqttService"/>
 
