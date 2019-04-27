@@ -1,0 +1,16 @@
+projects:
+  thanosgoapp:
+    schemaPath: app\src\main\graphql\schema.json
+    includes:
+      - app\src\main\graphql\**\*.graphql
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: ''
+        generatedFileName: ''
+        docsFilePath: app\src\main\graphql\com\amazonaws\amplify\generated\graphql
+        graphQLApiId: jfe77anodjbhrlxj6jxhosvap4
+      endpoints:
+        prod: >-
+          https://5ohay2rnkba5lkg2ldyzgskwiy.appsync-api.ap-south-1.amazonaws.com/graphql

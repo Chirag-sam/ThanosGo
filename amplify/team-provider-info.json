@@ -1,0 +1,14 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "thanosgoapp-20190427144334-authRole",
+            "UnauthRoleArn": "arn:aws:iam::325359213942:role/thanosgoapp-20190427144334-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::325359213942:role/thanosgoapp-20190427144334-authRole",
+            "Region": "ap-south-1",
+            "DeploymentBucketName": "thanosgoapp-20190427144334-deployment",
+            "UnauthRoleName": "thanosgoapp-20190427144334-unauthRole",
+            "StackName": "thanosgoapp-20190427144334",
+            "StackId": "arn:aws:cloudformation:ap-south-1:325359213942:stack/thanosgoapp-20190427144334/bc6c9300-68cc-11e9-a978-06c541265f78"
+        }
+    }
+}
