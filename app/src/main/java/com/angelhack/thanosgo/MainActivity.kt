@@ -30,6 +30,7 @@ import android.R.attr.password
 import com.amazonaws.mobile.client.AWSMobileClient
 import com.amazonaws.mobile.client.UserStateDetails
 import com.amazonaws.mobile.client.UserStateListener
+import com.angelhack.thanosgo.fragments.ProfileFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -64,7 +65,7 @@ class MainActivity : AppCompatActivity() {
 
         navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-        toolbar.setTitle("Uno")
+        toolbar.setTitle("Activities")
         loadFragment(EventsFragment())
     }
 
@@ -85,7 +86,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.profile -> {
                     toolbar.title = "Profile"
-                    loadFragment(EventsFragment())
+                    loadFragment(ProfileFragment())
                     return true
                 }
             }
