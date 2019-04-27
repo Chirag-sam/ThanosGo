@@ -5,6 +5,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+    android.defaultConfig.vectorDrawables.useSupportLibrary = true
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.angelhack.thanosgo"
@@ -28,7 +29,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
     implementation 'androidx.core:core-ktx:1.1.0-alpha05'
 
-    //For BottomNavBar
+    //UI Components
     implementation 'com.google.android.material:material:1.0.0-rc01'
 
 
