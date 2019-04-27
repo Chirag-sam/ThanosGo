@@ -1,34 +1,18 @@
 package com.angelhack.thanosgo
 
-import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.Intent
-import android.content.IntentSender
-import android.location.Location
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.angelhack.thanosgo.fragments.Point
-import com.google.android.gms.common.api.ResolvableApiException
-import com.google.android.gms.location.*
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.gms.tasks.Task
-import org.jetbrains.anko.toast
-import com.google.android.gms.location.LocationServices
-import com.google.android.gms.location.LocationResult
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationRequest
+
 import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.tasks.OnSuccessListener
-
-
-
+import org.jetbrains.anko.startActivity
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
@@ -93,6 +77,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         val index = marker?.tag as Int
         val activity = activities[index]
 
+        startActivity<PointInfoActivity>(PointInfoActivity.ACTIVITY to activity)
         return false
 
     }
