@@ -1,0 +1,39 @@
+  type Mutation {
+      putEventWithPhoto(
+  id: ID!
+  title: String!
+  type: String!
+  location: String!
+  is_finished: Boolean
+  difficulty_level: Int
+  organizer_photo: S3Object
+    finisher_photo: S3Object
+    finished_by: ID!
+          photo: S3ObjectInput
+      ): Event
+  }
+  type S3Object {
+       bucket: String!
+       key: String!
+       region: String!
+  }
+  input S3ObjectInput {
+       bucket: String!
+       key: String!
+       region: String!
+       localUri: String
+       mimeType: String
+  }
+
+type Event @model {
+  id: ID!
+  title: String!
+  type: String!
+  location: String!
+  is_finished: Boolean
+  difficulty_level: Int
+  organizer_photo: S3Object
+  finisher_photo: S3Object
+  finished_by: ID!
+  photo: S3Object
+}

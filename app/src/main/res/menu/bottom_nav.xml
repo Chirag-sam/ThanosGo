@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/activities"
+            android:icon="@drawable/ic_location_on_black_24dp"
+            android:title="@string/activities" />
+
+    <item
+            android:id="@+id/feed"
+            android:icon="@drawable/ic_format_list_bulleted_black_24dp"
+            android:title="@string/feed" />
+
+    <item
+            android:id="@+id/profile"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="@string/profile" />
+
+</menu>

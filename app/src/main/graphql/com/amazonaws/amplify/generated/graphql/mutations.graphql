@@ -1,0 +1,69 @@
+# this is an auto generated file. This will be overwritten
+mutation PutEventWithPhoto(
+  $id: ID!
+  $title: String!
+  $type: String!
+  $location: String!
+  $is_finished: Boolean
+  $difficulty_level: Int
+  $photo: S3ObjectInput
+) {
+  putEventWithPhoto(
+    id: $id
+    title: $title
+    type: $type
+    location: $location
+    is_finished: $is_finished
+    difficulty_level: $difficulty_level
+    photo: $photo
+  ) {
+    id
+    title
+    type
+    location
+    is_finished
+    difficulty_level
+    photo {
+      ...S3Object
+    }
+  }
+}
+mutation CreateEvent($input: CreateEventInput!) {
+  createEvent(input: $input) {
+    id
+    title
+    type
+    location
+    is_finished
+    difficulty_level
+    photo {
+      ...S3Object
+    }
+  }
+}
+mutation UpdateEvent($input: UpdateEventInput!) {
+  updateEvent(input: $input) {
+    id
+    title
+    type
+    location
+    is_finished
+    difficulty_level
+    photo {
+      ...S3Object
+    }
+  }
+}
+mutation DeleteEvent($input: DeleteEventInput!) {
+  deleteEvent(input: $input) {
+    id
+    title
+    type
+    location
+    is_finished
+    difficulty_level
+    photo {
+      ...S3Object
+    }
+  }
+}

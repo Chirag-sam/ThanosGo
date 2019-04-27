@@ -1,0 +1,23 @@
+{
+	"api": {
+		"thanosgoapp": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"securityType": "API_KEY"
+			}
+		}
+	},
+	"auth": {
+		"cognito0f4c9b00": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"storage": {
+		"s3a0a5b0db": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation"
+		}
+	}
+}

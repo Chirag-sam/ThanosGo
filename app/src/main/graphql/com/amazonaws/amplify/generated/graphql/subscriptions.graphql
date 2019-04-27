@@ -1,0 +1,40 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateEvent {
+  onCreateEvent {
+    id
+    title
+    type
+    location
+    is_finished
+    difficulty_level
+    photo {
+      ...S3Object
+    }
+  }
+}
+subscription OnUpdateEvent {
+  onUpdateEvent {
+    id
+    title
+    type
+    location
+    is_finished
+    difficulty_level
+    photo {
+      ...S3Object
+    }
+  }
+}
+subscription OnDeleteEvent {
+  onDeleteEvent {
+    id
+    title
+    type
+    location
+    is_finished
+    difficulty_level
+    photo {
+      ...S3Object
+    }
+  }
+}
