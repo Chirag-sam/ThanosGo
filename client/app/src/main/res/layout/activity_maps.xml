@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2"
+            android:weightSum="1"
             android:layout_alignParentBottom="true"
             android:id="@+id/buttons_container">
 
@@ -28,12 +28,6 @@
                      android:layout_weight="1"
                      android:background="@color/white"
                      android:src="@drawable/ic_format_list_bulleted_black_24dp"/>
-        <ImageButton android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:paddingTop="16dp"
-                     android:paddingBottom="16dp"
-                     android:layout_weight="1"
-                     android:background="@color/white"/>
 
     </LinearLayout>
 

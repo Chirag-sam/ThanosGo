@@ -26,9 +26,7 @@ import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.tasks.OnSuccessListener
-
-
-
+import org.jetbrains.anko.support.v4.startActivity
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {

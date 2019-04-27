@@ -2,7 +2,6 @@ package com.angelhack.thanosgo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.Fragment
 import android.view.MenuItem
 import com.amazonaws.mobile.config.AWSConfiguration
@@ -11,10 +10,7 @@ import com.angelhack.thanosgo.fragments.EventsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import com.apollographql.apollo.exception.ApolloException
-import javax.annotation.Nonnull
 import com.apollographql.apollo.GraphQLCall
-import android.R.attr.name
-import android.R.attr.description
 import android.content.Intent
 import android.util.Log
 import com.apollographql.apollo.api.Response
@@ -25,13 +21,9 @@ import type.CreateEventInput
 import android.widget.Toast
 import android.view.Menu
 import com.amazonaws.mobile.client.*
-import com.amazonaws.mobile.client.results.SignInResult
-import android.R.attr.password
-import android.widget.Toolbar
 import com.amazonaws.mobile.client.AWSMobileClient
-import com.amazonaws.mobile.client.UserStateDetails
-import com.amazonaws.mobile.client.UserStateListener
 import com.angelhack.thanosgo.fragments.ProfileFragment
+import org.jetbrains.anko.startActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -162,8 +154,11 @@ class MainActivity : AppCompatActivity() {
                 AWSMobileClient.getInstance().signOut()
                 return true
             }
+            R.id.report -> {
+               startActivity<ReportActivity>()
+                return true
+            }
             else -> return super.onOptionsItemSelected(item)
         }
-
     }
 }

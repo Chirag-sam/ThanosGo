@@ -10,7 +10,6 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
-
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -18,13 +17,14 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".ReportActivity"/>
+
         <activity android:name=".AuthActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
         </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -43,11 +43,11 @@
                 android:label="@string/title_activity_maps"
                 android:theme="@style/AppThemeNoAction">
         </activity>
-        <activity android:name=".MainActivity"
-        android:theme="@style/AppThemeNoAction"/>
+        <activity
+                android:name=".MainActivity"
+                android:theme="@style/AppThemeNoAction"/>
 
         <service android:name="org.eclipse.paho.android.service.MqttService"/>
-
     </application>
 
 </manifest>
