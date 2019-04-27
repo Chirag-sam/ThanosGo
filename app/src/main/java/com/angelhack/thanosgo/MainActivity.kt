@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.Fragment
 import android.view.MenuItem
-import androidx.annotation.NonNull
+import com.angelhack.thanosgo.fragments.EventsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         toolbar?.setTitle("Uno")
-        loadFragment(ActivitiesFragment())
+        loadFragment(EventsFragment())
     }
 
     private val mOnNavigationItemSelectedListener = object : BottomNavigationView.OnNavigationItemSelectedListener {
@@ -33,17 +33,17 @@ class MainActivity : AppCompatActivity() {
             when (item.getItemId()) {
                 R.id.activities -> {
                     toolbar.title = "Activities"
-                    loadFragment(ActivitiesFragment())
+                    loadFragment(EventsFragment())
                     return true
                 }
                 R.id.feed -> {
                     toolbar.title = "Feed"
-                    loadFragment(ActivitiesFragment())
+                    loadFragment(EventsFragment())
                     return true
                 }
                 R.id.profile -> {
                     toolbar.title = "Profile"
-                    loadFragment(ActivitiesFragment())
+                    loadFragment(EventsFragment())
                     return true
                 }
             }

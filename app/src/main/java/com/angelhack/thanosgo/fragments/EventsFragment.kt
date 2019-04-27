@@ -1,4 +1,4 @@
-package com.angelhack.thanosgo
+package com.angelhack.thanosgo.fragments
 
 
 import android.os.Bundle
@@ -6,8 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.angelhack.thanosgo.R
 
-class ActivitiesFragment : Fragment() {
+class EventsFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
