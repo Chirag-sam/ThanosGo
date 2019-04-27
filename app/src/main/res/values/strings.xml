@@ -24,4 +24,7 @@
         Location permission is needed for core functionality
     </string>
     <string name="settings">Settings</string>
+
+    <string name="title_activity_auth">AuthActivity</string>
+
 </resources>

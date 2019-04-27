@@ -9,6 +9,11 @@
             "UnauthRoleName": "thanosgoapp-20190427144334-unauthRole",
             "StackName": "thanosgoapp-20190427144334",
             "StackId": "arn:aws:cloudformation:ap-south-1:325359213942:stack/thanosgoapp-20190427144334/bc6c9300-68cc-11e9-a978-06c541265f78"
+        },
+        "categories": {
+            "auth": {
+                "cognito0f4c9b00": {}
+            }
         }
     }
 }
