@@ -27,6 +27,7 @@ class AuthActivity : AppCompatActivity() {
                         val intent = Intent(this@AuthActivity, MainActivity::class.java)
                         // start your next activity
                         startActivity(intent)
+                        finish()
                     }
                     UserState.SIGNED_OUT -> {
                         AWSMobileClient.getInstance().showSignIn(

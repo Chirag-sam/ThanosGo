@@ -18,9 +18,9 @@
               android:layout_height="wrap_content"
               android:text="53m"
               android:textColor="@color/red"
-              android:layout_alignBaseline="@+id/loc_image"
               android:layout_marginLeft="56dp"
-              android:layout_below="@+id/loc_image"
+              android:layout_alignBaseline="@id/loc_image"
+              android:layout_below="@id/loc_image"
               android:id="@+id/distance"
     />
 
@@ -30,7 +30,7 @@
               android:textSize="18sp"
               android:textColor="@color/green"
               android:textStyle="bold"
-              android:layout_toRightOf="@+id/loc_image"
+              android:layout_toRightOf="@id/loc_image"
               android:id="@+id/difficulty"
               android:layout_marginTop="24dp"
     />
@@ -38,9 +38,9 @@
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:id="@+id/date_added"
-              android:layout_below="@+id/difficulty"
+              android:layout_below="@id/difficulty"
               android:text="Date Added: 12/11/2019"
-              android:layout_alignLeft="@+id/difficulty"
+              android:layout_alignLeft="@id/difficulty"
               android:layout_marginTop="6dp"/>
 
     <TextView android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
                   android:layout_height="wrap_content"
                   android:orientation="horizontal"
                   android:weightSum="2"
-                  android:layout_below="@+id/distance"
+                  android:layout_below="@id/distance"
                   android:layout_marginTop="20dp"
                   android:id="@+id/button_cont"
 
@@ -73,7 +73,7 @@
                 android:background="@color/colorPrimary"
                 android:layout_margin="4dp"
                 android:textColor="@color/white"
-                android:id="@+id/start_work"
+                android:id="@+id/startWorkBtn"
                 android:text="Start work"
                 android:layout_weight="1"
         />
@@ -91,33 +91,38 @@
 
     <RelativeLayout android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@+id/button_cont"
-    >
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:text="Time to comple task:"
-                  android:textSize="25dp"
+                    android:layout_below="@id/button_cont">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Time to complete task:"
+                  android:textSize="24sp"
                   android:layout_centerHorizontal="true"
                   android:textStyle="bold"
-                  android:layout_above="@+id/time"
-                  android:textColor="@color/colorPrimary"
+                  android:layout_above="@id/timerTv"
+                  android:visibility="invisible"
+                  android:layout_marginBottom="12dp"
+                  android:id="@+id/completeTaskTv" android:textColor="@color/colorPrimary"
         />
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                   android:text="08:55"
-                  android:textSize="120dp"
                   android:layout_centerHorizontal="true"
                   android:layout_centerVertical="true"
-                  android:id="@+id/time"
-                  android:fontFamily="sans-serif-black"
+                  android:textSize="24sp"
 
+                  android:layout_marginBottom="12dp"
+                  android:id="@+id/timerTv"
+                  android:visibility="invisible"
         />
-        <ImageButton android:layout_width="100dp"
-                     android:layout_height="100dp"
+        <ImageButton android:layout_width="50dp"
+                     android:layout_height="50dp"
                      android:src="@drawable/ic_check_white_24dp"
                      android:background="@drawable/button_round_background"
                      android:layout_margin="4dp"
                      android:textColor="@color/white"
                      android:layout_centerHorizontal="true"
-                     android:layout_below="@+id/time"/>
+                     android:id="@+id/doneBtn"
+                     android:layout_below="@+id/timerTv"
+        android:visibility="invisible"/>
 
     </RelativeLayout>
 

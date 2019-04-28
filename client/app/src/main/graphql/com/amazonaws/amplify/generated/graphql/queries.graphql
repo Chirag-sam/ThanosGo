@@ -3,13 +3,14 @@ query GetEvent($id: ID!) {
   getEvent(id: $id) {
     id
     title
+    description
     type
     location
     is_finished
     difficulty_level
-    photo {
-      ...S3Object
-    }
+    organizer_photo
+    finisher_photo
+    finished_by
   }
 }
 query ListEvents(
@@ -21,13 +22,14 @@ query ListEvents(
     items {
       id
       title
+      description
       type
       location
       is_finished
       difficulty_level
-      photo {
-        ...S3Object
-      }
+      organizer_photo
+      finisher_photo
+      finished_by
     }
     nextToken
   }

@@ -1,9 +1,10 @@
-package com.angelhack.thanosgo
+package com.angelhack.thanosgo.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.angelhack.thanosgo.R
 import com.angelhack.thanosgo.models.Event
 import kotlinx.android.synthetic.main.event_item.view.*
 
@@ -28,7 +29,7 @@ class EventsAdapter(val events: List<Event>, val itemClick: (Event) -> Unit): Re
             with(event) {
 
                 itemView.eventName.text = title
-                itemView.eventDesc.text = desc
+                itemView.eventDesc.text = description
                 itemView.setOnClickListener {
                     itemClick(this)
                 }

@@ -4,11 +4,11 @@ package com.angelhack.thanosgo
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.angelhack.thanosgo.fragments.Point
 import com.google.android.gms.maps.model.Marker
 
 
 
+import com.angelhack.thanosgo.models.Event
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -20,13 +20,15 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 import org.jetbrains.anko.startActivity
+import kotlinx.android.synthetic.main.activity_maps.*
+
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
 
     private lateinit var mMap: GoogleMap
-    private var markers = mutableListOf<Marker>()
+    private var activities = listOf<Event>()
 
     companion object {
         val eventType = "EVENT_TYPE"
@@ -38,8 +40,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         setContentView(R.layout.activity_maps)
 
         val eventName = intent.getStringExtra(eventType)
-
-
+        activities = intent.getParcelableArrayListExtra(ACTIVITIES)
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -49,8 +50,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
 
     }
-
-    private var activities = listOf<Point>()
 
     /**
      * Manipulates the map once available.
@@ -64,22 +63,26 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-         activities = intent.getParcelableArrayListExtra<Point>(ACTIVITIES)
+         activities = intent.getParcelableArrayListExtra<Event>(ACTIVITIES)
 
-        activities?.mapIndexed { index, point ->
-            val latLng = LatLng(point.latitude, point.longitude)
-            val markerOptions = MarkerOptions().position(latLng).title(point.event)
-            if (point.event == "garbage")
-                else if (point.event == "tree")
-                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+        // Add a marker in Sydney and move the camera
+
+        activities.mapIndexed { index, point ->
+            val (lat,lng) = point.location.split(",")
+            val latLng = LatLng(lat.toDouble(), lng.toDouble())
+            val markerOptions = MarkerOptions().position(latLng).title(point.title)
+            when {
+                point.type == "Planting" -> markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+                point.type == "Trash" -> markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+                point.type == "Recycling" -> markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
+                else -> {
+
+                }
+            }
             mMap.addMarker(markerOptions).tag = index
         }
 
-
-        mMap.addMarker(MarkerOptions().position(LatLng(12.972849, 80.238182))
-            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)))
-
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(12.972849, 80.238182), 1f))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(convertStringToLocation(activities[0].location), 1f))
         mMap.animateCamera(CameraUpdateFactory.zoomIn());
         // Zoom out to zoom level 10, animating with a duration of 2 seconds.
         mMap.animateCamera(CameraUpdateFactory.zoomTo(12f), 3000, null)
@@ -97,7 +100,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         return false
 
     }
-
+    fun convertStringToLocation(location:String):LatLng{
+        val (lat,lng) = location.split(",")
+        return LatLng(lat.toDouble(),lng.toDouble())
+    }
 
 
 
