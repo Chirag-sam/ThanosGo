@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        android:layout_margin="8dp"
+        app:cardElevation="5dp">
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:id="@+id/cont">
+            <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:id="@+id/eventImage"
+                    app:srcCompat="@drawable/ic_delete_forever_black_24dp"/>
+            <LinearLayout android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical">
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="Event Name"
+                          android:textStyle="bold"
+                          android:textSize="24sp"
+                          android:id="@+id/eventName"
+                          android:textColor="@color/blackk"/>
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:id="@+id/eventDesc"
+                          android:maxLines="3"
+                          android:text="Lorum ipspppppppp ppppppppppppppppppppppppppppp  ppppppppppppppppppppppp"/>
+            </LinearLayout>
+        </LinearLayout>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textColor="@color/blackk"
+                  android:layout_toLeftOf="@+id/kms_away"
+                  android:text="Nearest: "
+                  android:id="@+id/difficulty_text"
+                  android:layout_marginTop="6dp"
+        />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="1.2Kms"
+                  android:layout_alignParentRight="true"
+                  android:id="@+id/kms_away"
+                  android:textStyle="bold"
+                  android:textColor="#DC6924"
+        android:layout_marginTop="6dp"
+        android:layout_marginRight="8dp"/>
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cont"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Available: 200"
+                      android:id="@+id/avail"
+                      android:layout_marginLeft="10dp"
+                      android:layout_toLeftOf="@+id/lin"
+                      android:textSize="12dp"
+            />
+            <LinearLayout android:layout_width="2dp"
+                          android:layout_height="10dp"
+                          android:layout_toLeftOf="@+id/complet"
+                          android:layout_marginRight="10dp"
+                          android:background="@color/colorPrimary"
+                          android:layout_marginTop="5dp"
+                          android:id="@+id/lin"
+                          android:orientation="vertical"
+                          android:layout_marginLeft="10dp"
+            ></LinearLayout>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Finished: 15"
+                      android:textSize="12dp"
+                      android:id="@+id/complet"
+                      android:layout_marginRight="10dp"
+                      android:layout_alignParentRight="true"
+            />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

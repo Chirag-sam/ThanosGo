@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <ImageView android:layout_width="100dp"
+               android:layout_height="100dp"
+               android:id="@+id/loc_image"
+               app:srcCompat="@drawable/ic_location_on_black_24dp"
+               android:backgroundTint="@color/colorPrimary"
+               android:layout_marginTop="20dp"
+               android:layout_marginLeft="20dp"
+               android:layout_marginRight="20dp"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="53m"
+              android:textColor="@color/red"
+              android:layout_alignBaseline="@id/loc_image"
+              android:layout_marginLeft="56dp"
+              android:layout_below="@id/loc_image"
+              android:id="@+id/distance"
+    />
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Difficulty: Easy"
+              android:textSize="18sp"
+              android:textColor="@color/green"
+              android:textStyle="bold"
+              android:layout_toRightOf="@id/loc_image"
+              android:id="@+id/difficulty"
+              android:layout_marginTop="24dp"
+    />
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/date_added"
+              android:layout_below="@id/difficulty"
+              android:text="Date Added: 12/11/2019"
+              android:layout_alignLeft="@id/difficulty"
+              android:layout_marginTop="6dp"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/points"
+              android:layout_below="@+id/date_added"
+              android:text="Value: 50 points"
+              android:layout_alignLeft="@+id/difficulty"
+              android:layout_marginTop="6dp"/>
+
+    <!--<LinearLayout android:layout_width="match_parent"-->
+    <!--android:layout_height="2dp"-->
+    <!--android:background="#737373"-->
+    <!--android:layout_marginLeft="20dp"-->
+    <!--android:layout_marginRight="20dp"-->
+    <!--android:layout_below="@+id/loc_image"-->
+    <!--android:layout_marginTop="28dp"/>-->
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:weightSum="2"
+                  android:layout_below="@id/distance"
+                  android:layout_marginTop="20dp"
+                  android:id="@+id/button_cont"
+
+    >
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:layout_margin="4dp"
+                android:textColor="@color/white"
+                android:id="@+id/startWorkBtn"
+                android:text="Start work"
+                android:layout_weight="1"
+        />
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:layout_margin="4dp"
+                android:textColor="@color/white"
+                android:id="@+id/report_fake"
+                android:text="Report fake"
+                android:layout_weight="1"
+
+        />
+    </LinearLayout>
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/button_cont"
+    >
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="Time to complete task:"
+                  android:textSize="24sp"
+                  android:layout_centerHorizontal="true"
+                  android:textStyle="bold"
+                  android:layout_above="@id/timerTv"
+                  android:visibility="invisible"
+                  android:layout_marginBottom="12dp"
+                  android:id="@+id/completeTaskTv"
+                  android:textColor="@color/colorPrimary"
+        />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="08:55"
+                  android:textSize="24sp"
+                  android:layout_centerHorizontal="true"
+                  android:layout_centerVertical="true"
+                  android:layout_marginBottom="12dp"
+                  android:id="@+id/timerTv"
+                  android:visibility="invisible"
+                  android:fontFamily="sans-serif-black"
+
+        />
+        <ImageButton android:layout_width="100dp"
+                     android:layout_height="100dp"
+                     android:src="@drawable/ic_done_white_24dp"
+                     android:background="@drawable/button_round_background"
+                     android:layout_margin="4dp"
+                     android:visibility="invisible"
+                     android:textColor="@color/white"
+                     android:id="@+id/doneBtn"
+                     android:layout_centerHorizontal="true"
+                     android:layout_below="@+id/timerTv"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
