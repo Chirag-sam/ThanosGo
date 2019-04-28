@@ -6,6 +6,20 @@
 			"output": {
 				"securityType": "API_KEY"
 			}
+		},
+		"test": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "test",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
 		}
 	},
 	"auth": {
@@ -18,6 +32,27 @@
 		"s3a0a5b0db": {
 			"service": "S3",
 			"providerPlugin": "awscloudformation"
+		},
+		"test": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"function": {
+		"test": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"dependsOn": [
+				{
+					"category": "storage",
+					"resourceName": "test",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
 		}
 	}
 }

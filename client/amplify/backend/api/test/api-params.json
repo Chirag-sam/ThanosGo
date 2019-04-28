@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/test",
+            "lambdaFunction": "test",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "test",
+    "apiName": "test",
+    "functionArns": [
+        {
+            "lambdaFunction": "test"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "thanosgoapp-20190427144334-authRole",
+        "unAuthRoleName": "thanosgoapp-20190427144334-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "test",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
