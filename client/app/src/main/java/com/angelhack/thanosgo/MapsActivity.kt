@@ -1,28 +1,25 @@
 package com.angelhack.thanosgo
 
+
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.Intent
-import android.content.IntentSender
-import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.angelhack.thanosgo.fragments.Point
+import com.google.android.gms.maps.model.Marker
+
+
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
-import com.google.android.gms.tasks.Task
-import org.jetbrains.anko.toast
 
 
-import android.graphics.BitmapFactory
-import android.graphics.Bitmap
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 
-
+import org.jetbrains.anko.startActivity
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
@@ -67,7 +64,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        mMap.isMyLocationEnabled = true
          activities = intent.getParcelableArrayListExtra<Point>(ACTIVITIES)
 
         activities?.mapIndexed { index, point ->
@@ -90,13 +86,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
         mMap.setOnMarkerClickListener(this)
 
-    } override fun onMarkerClick(marker: Marker?): Boolean {
+    }
+
+    override fun onMarkerClick(marker: Marker?): Boolean {
 
         val index = marker?.tag as Int
         val activity = activities[index]
 
-
-
+        startActivity<PointInfoActivity>(PointInfoActivity.ACTIVITY to activity)
         return false
 
     }
