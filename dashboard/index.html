@@ -130,28 +130,19 @@
           <div id="map"></div>
 
          
-
           <h2>Section title</h2>
           <div class="table-responsive">
-            <table class="table table-striped table-sm">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-              </tbody>
+                <table class="table table-striped table-sm">
+                    <thead>
+                        <tr>
+                        <th>#</th>
+                        <th>event name</th>
+                        <th>event category</th>
+                        <th>status</th>
+                        </tr>
+                    </thead>
+                    <tbody id = "tbody">
+                   </tbody>
             </table>
           </div>
         </main>
@@ -159,6 +150,29 @@
     </div>
 
     <script src="map.js"></script>
+    <script type="text/javascript">
+      function GenerateTable() {
+  
+          var event = new Array();
+          event.push([1, "xn,xnv", "ahfdh","wf"]);
+          event.push([2, "a;ksfjskj", "alkdjlj", "aefAF"]);
+
+          var tablecontents = "";
+         
+           for(i = 0;i<event.length;i++){
+              event[i] = '<td>' + event[i].join('</td><td>') + '</td>';
+               }
+
+              tablecontents = '<tr>' + event.join('</tr><tr>') + '</tr>';
+              document.getElementById("tbody").innerHTML = tablecontents;
+             }
+             
+           window.onload = function() {
+                  GenerateTable()
+                  };
+
+
+    </script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
