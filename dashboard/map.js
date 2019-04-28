@@ -12,7 +12,10 @@ function initMap() {
         plotMarker(
             map, 
             {lat: pos.coords.latitude, lng: pos.coords.longitude},
-            "https://i.imgur.com/R4NqDPd.png"
+            {
+                url: "https://i.imgur.com/N2gJ2KF.png",
+                scaledSize: new google.maps.Size(50, 50),
+            }
         )
 
         getAllEvents(data => {
@@ -46,7 +49,10 @@ const plotEvents = (map, events) => events.forEach(event => {
     var marker = plotMarker(
         map, 
         event.location, 
-        event.is_finished?"http://maps.google.com/mapfiles/ms/icons/yellow-dot.png":""
+        event.is_finished?{
+            url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
+            scaledSize: new google.maps.Size(48, 48),
+        }:""
     )
     marker.addListener("click", () => {
         getInfoWindow(event).open(map, marker)
