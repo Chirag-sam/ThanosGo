@@ -48,10 +48,10 @@ class PointInfoActivity : AppCompatActivity() {
             }
         })
 
-        clickPicBtn.setOnClickListener {
-            //toast("Clicked!")
-            dispatchTakePictureIntent()
-        }
+//        clickPicBtn.setOnClickListener {
+//            //toast("Clicked!")
+//            dispatchTakePictureIntent()
+//        }
     }
 
     private var imageFilePath  = ""

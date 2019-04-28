@@ -22,6 +22,7 @@ import android.widget.Toast
 import android.view.Menu
 import com.amazonaws.mobile.client.*
 import com.amazonaws.mobile.client.AWSMobileClient
+import com.angelhack.thanosgo.fragments.FeedFragment
 import com.angelhack.thanosgo.fragments.ProfileFragment
 import org.jetbrains.anko.startActivity
 
@@ -82,7 +83,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.feed -> {
                     toolbarrr.title = "Feed"
-                    loadFragment(EventsFragment())
+                    loadFragment(FeedFragment())
                     return true
                 }
                 R.id.profile -> {

@@ -13,7 +13,8 @@
         <LinearLayout android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:orientation="horizontal"
-                      android:id="@+id/cont">
+                      android:id="@+id/cont"
+                      android:layout_marginTop="10dp">
             <ImageView
                     android:layout_width="70dp"
                     android:layout_height="70dp"
@@ -50,6 +51,7 @@
                           android:layout_height="wrap_content"
                           android:layout_below="@+id/time_icon"
                           android:layout_marginTop="10dp"
+                          android:paddingRight="10dp"
                           android:id="@+id/eventDescTv"
                           android:textColor="@color/blackk"
                           android:text="I had an amazing time clearing this smelly trash. It felt satisfying and I recommend everyone do this!"/>
