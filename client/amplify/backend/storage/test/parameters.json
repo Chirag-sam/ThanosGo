@@ -1,0 +1,7 @@
+{
+    "tableName": "events-test",
+    "partitionKeyName": "title",
+    "partitionKeyType": "S",
+    "sortKeyName": "catagory",
+    "sortKeyType": "S"
+}
