@@ -70,3 +70,6 @@ const eventsList = [
 
 //GraphQL endpoint: https://5ohay2rnkba5lkg2ldyzgskwiy.appsync-api.ap-south-1.amazonaws.com/graphql
 //GraphQL API KEY: da2-237y33cpofh2xcbhfnvue4dyne
+
+
+testFunc()

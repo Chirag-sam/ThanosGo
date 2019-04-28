@@ -47,6 +47,10 @@ const allEvents = API.graphql(graphqlOperation(queries.listEvents)).then(res =>
   })
 );
 
+function testfunc() {
+  console.log("test")
+}
+
 
 var event = {
   title: "new-title-1",
