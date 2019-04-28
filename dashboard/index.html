@@ -20,6 +20,7 @@
   <style>
       #map {
         height: 300%;
+        margin-bottom: 30px;
       }
   </style>
 
@@ -48,9 +49,10 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   <span data-feather="users"></span>
-                  Customers
+                  Patrons
                 </a>
               </li>
+
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   <span data-feather="bar-chart-2"></span>
@@ -92,7 +94,6 @@
                                 <select class="form-control" id="event-catagory">
                                   <option value ="Planting">Planting</option>
                                   <option value ="Trash">Cleaning the trash</option>
-                                  <option value ="FoodWastage">Food wastage</option>
                                   <option value ="Recycling">Recycling</option>
                                 </select>
                               </div>
@@ -116,7 +117,7 @@
 
           <div id="map"></div>
 
-          <h2>Past events</h2>
+          <h2>Events</h2>
           <div class="table-responsive">
             <table class="table table-striped table-sm">
               <thead>
@@ -125,6 +126,7 @@
                   <th>Name</th>
                   <th>Catagory</th>
                   <th>Description</th>
+                  <th>Difficulty</th>
                 </tr>
               </thead>
               <tbody id="tbody">

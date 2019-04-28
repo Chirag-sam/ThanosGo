@@ -34,14 +34,16 @@ Amplify.configure(awsconfig);
 // });
 
 // Simple query
-const allEvents = API.graphql(graphqlOperation(queries.listEvents)).then(res =>
+API.graphql(graphqlOperation(queries.listEvents)).then(res =>
   res.data.listEvents.items.map((item, i) => {
+    console.log(item)
     document.querySelector("#tbody").innerHTML += `
       <tr>
         <td>${i+1}</td>
         <td>${item.title}</td>
         <td>${item.type}</td>
-        <td>ipsum</td>
+        <td>${item.description}</td>
+        <td>${item.difficulty_level}</td>
       </tr>
     `
   })
@@ -58,11 +60,24 @@ var event = {
   location: "loca-1"
 }
 
-// API.graphql(graphqlOperation(mutations.createEvent, {
-//   input: event
-// })).then(res => console.log(res))
-
-
-const testFunc = () => {
-  console.log("TEST")
+window.createEvent = function (event, resp) {
+  API.graphql(graphqlOperation(mutations.createEvent, {
+    input: event
+  })).then(res => resp(res))
 }
+
+window.getAllEvents = function (resp) {
+  API.graphql(graphqlOperation(queries.listEvents))
+  .then(res => resp(res.data.listEvents.items))
+} 
+
+    // res.data.listEvents.items.map((item, i) => {
+    //   document.querySelector("#tbody").innerHTML += `
+    //     <tr>
+    //       <td>${i+1}</td>
+    //       <td>${item.title}</td>
+    //       <td>${item.type}</td>
+    //       <td>ipsum</td>
+    //     </tr>
+    //   `
+    // })
