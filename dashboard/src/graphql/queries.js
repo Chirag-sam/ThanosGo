@@ -28,8 +28,14 @@ export const getEvent = `query GetEvent($id: ID!) {
   getEvent(id: $id) {
     id
     title
+    description
     type
     location
+    is_finished
+    difficulty_level
+    organizer_photo
+    finisher_photo
+    finished_by
   }
 }
 `;
@@ -42,8 +48,14 @@ export const listEvents = `query ListEvents(
     items {
       id
       title
+      description
       type
       location
+      is_finished
+      difficulty_level
+      organizer_photo
+      finisher_photo
+      finished_by
     }
     nextToken
   }

@@ -23,7 +23,7 @@ module.exports = {
     hot: true
   },
   plugins: [
-    new CopyWebpackPlugin(["index.html", "dashboard.css", "map.js"]),
+    new CopyWebpackPlugin(["index.html", "dashboard.css", "map.js", "images/*.png"]),
     new webpack.HotModuleReplacementPlugin()
   ]
 };

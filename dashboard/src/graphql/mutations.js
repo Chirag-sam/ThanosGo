@@ -29,8 +29,14 @@ export const createEvent = `mutation CreateEvent($input: CreateEventInput!) {
   createEvent(input: $input) {
     id
     title
+    description
     type
     location
+    is_finished
+    difficulty_level
+    organizer_photo
+    finisher_photo
+    finished_by
   }
 }
 `;
@@ -38,8 +44,14 @@ export const updateEvent = `mutation UpdateEvent($input: UpdateEventInput!) {
   updateEvent(input: $input) {
     id
     title
+    description
     type
     location
+    is_finished
+    difficulty_level
+    organizer_photo
+    finisher_photo
+    finished_by
   }
 }
 `;
@@ -47,8 +59,14 @@ export const deleteEvent = `mutation DeleteEvent($input: DeleteEventInput!) {
   deleteEvent(input: $input) {
     id
     title
+    description
     type
     location
+    is_finished
+    difficulty_level
+    organizer_photo
+    finisher_photo
+    finished_by
   }
 }
 `;
