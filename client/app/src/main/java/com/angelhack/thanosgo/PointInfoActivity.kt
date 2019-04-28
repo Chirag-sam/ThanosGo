@@ -1,5 +1,6 @@
 package com.angelhack.thanosgo
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
@@ -10,6 +11,7 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.FileProvider
 import kotlinx.android.synthetic.main.activity_point_info2.*
 import org.jetbrains.anko.toast
@@ -53,7 +55,6 @@ class PointInfoActivity : AppCompatActivity() {
 
       startWorkBtn.setOnClickListener {
           timerTv.visibility = View.VISIBLE
-          doneBtn.visibility = View.VISIBLE
           completeTaskTv.visibility = View.VISIBLE
 
            startCountDown()
@@ -61,16 +62,38 @@ class PointInfoActivity : AppCompatActivity() {
     }
 
     private fun startCountDown() {
-        object : CountDownTimer(600000, 1000) {
+        object : CountDownTimer(30000, 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
-                timerTv.text = ""+String.format("%d min, %d sec",
+                timerTv.text = ""+String.format("%d min: %d sec",
                     TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished),
                     TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
                             TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)))            }
 
             override fun onFinish() {
                 timerTv.text = "done!"
+                doneBtn.visibility = View.VISIBLE
+
+                val alertDialog: AlertDialog? = this@PointInfoActivity?.let {
+                    val builder = AlertDialog.Builder(it)
+                    builder.apply {
+                        setPositiveButton(R.string.ok
+                        ) { dialog, id ->
+                            // User clicked OK button
+                            dispatchTakePictureIntent()
+                        }
+                        setNegativeButton(R.string.cancel
+                        ) { dialog, id ->
+                            // User cancelled the dialog
+                        }
+                    }
+                    builder?.setMessage(R.string.dialog_message)
+                        .setTitle(R.string.dialog_title)
+                    // Create the AlertDialog
+                    builder.create()
+                }
+
+                alertDialog?.show()
             }
         }.start()
 

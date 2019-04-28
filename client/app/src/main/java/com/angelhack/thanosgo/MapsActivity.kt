@@ -4,6 +4,7 @@ package com.angelhack.thanosgo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.angelhack.thanosgo.fragments.Point
+import com.angelhack.thanosgo.models.Event
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -21,7 +22,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
 
     private lateinit var mMap: GoogleMap
-    private var activities = listOf<Point>()
+    private var activities = listOf<Event>()
 
     companion object {
         val eventType = "EVENT_TYPE"
@@ -62,12 +63,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
         // Add a marker in Sydney and move the camera
 
-        activities?.mapIndexed { index, point ->
-            val latLng = LatLng(point.latitude, point.longitude)
-            mMap.addMarker(MarkerOptions().position(latLng).title(point.event)).tag = index
+        activities.mapIndexed { index, point ->
+            val (lat,lng) = point.location.split(",")
+            val latLng = LatLng(lat.toDouble(), lng.toDouble())
+            mMap.addMarker(MarkerOptions().position(latLng).title(point.title)).tag = index
         }
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(activities[0].latitude, activities[0].longitude), 1f))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(convertStringToLocation(activities[0].location), 1f))
         mMap.animateCamera(CameraUpdateFactory.zoomIn());
         // Zoom out to zoom level 10, animating with a duration of 2 seconds.
         mMap.animateCamera(CameraUpdateFactory.zoomTo(12f), 3000, null)
@@ -83,7 +85,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         return false
 
     }
-
+    fun convertStringToLocation(location:String):LatLng{
+        val (lat,lng) = location.split(",")
+        return LatLng(lat.toDouble(),lng.toDouble())
+    }
 
 
 

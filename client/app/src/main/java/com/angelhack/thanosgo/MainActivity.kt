@@ -28,7 +28,7 @@ import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mAWSAppSyncClient: AWSAppSyncClient
+    public lateinit var mAWSAppSyncClient: AWSAppSyncClient
     private lateinit var toolbar: androidx.appcompat.widget.Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -124,21 +124,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private val eventsCallback = object : GraphQLCall.Callback<ListEventsQuery.Data>() {
-        override fun onResponse(response: Response<ListEventsQuery.Data>) {
-            Log.i("Results", "Fetched Event" + response.toString())
-        }
 
-        override fun onFailure(e: ApolloException) {
-            Log.e("Error", e.toString())
-        }
-    }
-
-    fun getEvents () {
-        mAWSAppSyncClient.query(ListEventsQuery.builder().build())
-            .responseFetcher(AppSyncResponseFetchers.CACHE_AND_NETWORK)
-            .enqueue(eventsCallback)
-    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.

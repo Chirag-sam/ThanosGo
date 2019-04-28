@@ -3,38 +3,41 @@ subscription OnCreateEvent {
   onCreateEvent {
     id
     title
+    description
     type
     location
     is_finished
     difficulty_level
-    photo {
-      ...S3Object
-    }
+    organizer_photo
+    finisher_photo
+    finished_by
   }
 }
 subscription OnUpdateEvent {
   onUpdateEvent {
     id
     title
+    description
     type
     location
     is_finished
     difficulty_level
-    photo {
-      ...S3Object
-    }
+    organizer_photo
+    finisher_photo
+    finished_by
   }
 }
 subscription OnDeleteEvent {
   onDeleteEvent {
     id
     title
+    description
     type
     location
     is_finished
     difficulty_level
-    photo {
-      ...S3Object
-    }
+    organizer_photo
+    finisher_photo
+    finished_by
   }
 }

@@ -29,7 +29,7 @@ class EventsAdapter(val events: List<Event>, val itemClick: (Event) -> Unit): Re
             with(event) {
 
                 itemView.eventName.text = title
-                itemView.eventDesc.text = desc
+                itemView.eventDesc.text = description
                 itemView.setOnClickListener {
                     itemClick(this)
                 }
