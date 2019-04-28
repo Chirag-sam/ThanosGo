@@ -58,11 +58,11 @@ class EventsFragment : Fragment() {
         val perms = arrayOf<String>(Manifest.permission.ACCESS_FINE_LOCATION)
         if (EasyPermissions.hasPermissions(this.activity?.applicationContext!!, *perms)) {
 
-            val activities = listOf<Point>(Point(1, 12.343, 80.232, "garbage"),
-                Point(1, 12.3232, 80.564, "garbage"),
-                Point(1, 12.3544, 80.2324, "plant tree"),
-                Point(1, 12.652, 80.465, "garbage"),
-                Point(1, 12.122, 80.2452, "plant tree"))
+            val activities = listOf<Point>(Point(1, 12.957, 80.232, "garbage"),
+                Point(1, 12.965, 80.2298, "garbage"),
+                Point(1, 12.9340, 80.2433, "tree"),
+                Point(1, 12.948, 80.2465, "garbage"),
+                Point(1, 12.923, 80.2452, "tree"))
             startActivity<MapsActivity>(MapsActivity.eventType to eventType, MapsActivity.ACTIVITIES to activities)
         } else {
             // Do not have permissions, request them now

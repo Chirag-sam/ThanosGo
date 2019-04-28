@@ -9,24 +9,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.angelhack.thanosgo.fragments.Point
-import com.google.android.gms.common.api.ResolvableApiException
-import com.google.android.gms.location.*
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.google.android.gms.tasks.Task
 import org.jetbrains.anko.toast
-import com.google.android.gms.location.LocationServices
-import com.google.android.gms.location.LocationResult
-import com.google.android.gms.location.LocationCallback
-import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.tasks.OnSuccessListener
-import org.jetbrains.anko.support.v4.startActivity
+
+
+import android.graphics.BitmapFactory
+import android.graphics.Bitmap
+
+
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
@@ -68,18 +64,26 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+    @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
-        // Add a marker in Sydney and move the camera
+        mMap.isMyLocationEnabled = true
          activities = intent.getParcelableArrayListExtra<Point>(ACTIVITIES)
 
         activities?.mapIndexed { index, point ->
             val latLng = LatLng(point.latitude, point.longitude)
-            mMap.addMarker(MarkerOptions().position(latLng).title(point.event)).tag = index
+            val markerOptions = MarkerOptions().position(latLng).title(point.event)
+            if (point.event == "garbage")
+                else if (point.event == "tree")
+                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+            mMap.addMarker(markerOptions).tag = index
         }
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(activities[0].latitude, activities[0].longitude), 1f))
+
+        mMap.addMarker(MarkerOptions().position(LatLng(12.972849, 80.238182))
+            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)))
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(12.972849, 80.238182), 1f))
         mMap.animateCamera(CameraUpdateFactory.zoomIn());
         // Zoom out to zoom level 10, animating with a duration of 2 seconds.
         mMap.animateCamera(CameraUpdateFactory.zoomTo(12f), 3000, null)
@@ -90,6 +94,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
 
         val index = marker?.tag as Int
         val activity = activities[index]
+
+
 
         return false
 

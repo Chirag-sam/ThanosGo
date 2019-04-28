@@ -7,9 +7,7 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="12dp"
         android:layout_margin="8dp"
-        app:contentPaddingTop="10dp"
-        app:cardElevation="5dp"
->
+        app:cardElevation="5dp">
     <RelativeLayout android:layout_width="match_parent"
                     android:layout_height="match_parent">
         <LinearLayout android:layout_width="wrap_content"
@@ -20,41 +18,60 @@
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:id="@+id/eventImage"
-                    app:srcCompat="@drawable/ic_delete_forever_black_24dp"/>
-            <LinearLayout android:layout_width="wrap_content"
+                    app:srcCompat="@drawable/ic_person_black_24dp"
+            android:tint="@color/colorPrimary"/>
+            <RelativeLayout android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:orientation="vertical">
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-                          android:text="Event Name"
+                          android:text="I am thanos"
                           android:textStyle="bold"
-                          android:textSize="24sp"
+                          android:textSize="18sp"
                           android:id="@+id/eventName"
                           android:textColor="@color/blackk"/>
+                <ImageView android:layout_width="12dp"
+                           android:layout_height="12dp"
+                app:srcCompat="@drawable/ic_access_time_black_24dp"
+                           android:id="@+id/time_icon"
+                           android:layout_marginRight="7dp"
+                           android:layout_below="@+id/eventName"
+                           android:layout_marginTop="3dp"
+                />
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-                          android:id="@+id/eventDesc"
-                          android:maxLines="3"
-                          android:text="Lorum ipspppppppp ppppppppppppppppppppppppppppp  ppppppppppppppppppppppp"/>
-            </LinearLayout>
+                          android:id="@+id/timeTv"
+                          android:text="Today at 5:56AM"
+                          android:layout_below="@+id/eventName"
+
+                          android:layout_toRightOf="@+id/time_icon"
+                android:textSize="12dp"/>
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_below="@+id/time_icon"
+                          android:layout_marginTop="10dp"
+                          android:id="@+id/eventDescTv"
+                          android:textColor="@color/blackk"
+                          android:text="I had an amazing time clearing this smelly trash. It felt satisfying and I recommend everyone do this!"/>
+            </RelativeLayout>
         </LinearLayout>
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:textColor="@color/blackk"
-                  android:layout_toLeftOf="@+id/kms_away"
-                  android:text="Nearest: "
+                  android:layout_toLeftOf="@id/timeTakenTv"
+                  android:text="Time taken: "
                   android:id="@+id/difficulty_text"
                   android:layout_marginTop="6dp"
         />
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:text="1.2Kms"
+                  android:text="14 mins"
                   android:layout_alignParentRight="true"
-                  android:id="@+id/kms_away"
+                  android:id="@+id/timeTakenTv"
                   android:textStyle="bold"
                   android:textColor="#DC6924"
-        android:layout_marginTop="6dp"
-        android:layout_marginRight="8dp"/>
+                  android:layout_marginTop="6dp"
+                  android:layout_marginRight="8dp"/>
         <RelativeLayout android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/cont"
@@ -62,8 +79,8 @@
                         android:layout_marginBottom="10dp">
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Available: 200"
-                      android:id="@+id/avail"
+                      android:text="Points: 200"
+                      android:id="@+id/pointsTv"
                       android:layout_marginLeft="10dp"
                       android:layout_toLeftOf="@+id/lin"
                       android:textSize="12dp"
@@ -78,10 +95,9 @@
                           android:orientation="vertical"
                           android:layout_marginLeft="10dp"
             ></LinearLayout>
-            <TextView android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:text="Finished: 15"
-                      android:textSize="12dp"
+            <ImageView android:layout_width="16dp"
+                      android:layout_height="16dp"
+                      app:srcCompat="@drawable/ic_delete_forever_black_24dp"
                       android:id="@+id/complet"
                       android:layout_marginRight="10dp"
                       android:layout_alignParentRight="true"
